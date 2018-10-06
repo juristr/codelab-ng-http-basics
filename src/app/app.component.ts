@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PeopleService } from './people.service';
+import { PeopleService, Person } from './people.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,13 @@ import { PeopleService } from './people.service';
 })
 export class AppComponent implements OnInit {
   title = 'Angular Http Basics';
+  people: Person[];
 
   constructor(private peopleService: PeopleService) {}
 
   ngOnInit(): void {
-    this.peopleService.getPeople().subscribe(x => console.log(x));
+    this.peopleService.getPeople().subscribe(x => {
+      this.people = x;
+    });
   }
 }

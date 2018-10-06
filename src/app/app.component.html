@@ -22,7 +22,12 @@
         <app-sidenav></app-sidenav>
       </mat-drawer>
       <mat-drawer-content class="app-page-container">
-        Content here
+        <h1>People</h1>
+
+        <div *ngFor="let person of people">
+          {{ person.name }}
+        </div>
+
       </mat-drawer-content>
     </mat-drawer-container>
   </div>
