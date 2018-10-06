@@ -1,0 +1,13 @@
+{
+  "name": "apimock",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "json-server --routes routes.json --watch db.json"
+  },
+  "dependencies": {
+    "json-server": "^0.12.1"
+  }
+}
