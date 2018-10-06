@@ -18,6 +18,12 @@ export class AppComponent implements OnInit {
   }
 
   createPerson(name: string) {
-    console.log('new person', name);
+    this.peopleService
+      .createPerson({
+        name: name
+      })
+      .subscribe(createdPerson => {
+        console.log(createdPerson);
+      });
   }
 }
