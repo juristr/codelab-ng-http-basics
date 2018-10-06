@@ -24,6 +24,13 @@
       <mat-drawer-content class="app-page-container">
         <h1>People</h1>
 
+        <mat-form-field>
+          <input matInput placeholder="Person name" #personName>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="createPerson(personName.value)">Create</button>
+
+        <hr />
+
         <div *ngFor="let person of people | async">
           {{ person.name }}
         </div>

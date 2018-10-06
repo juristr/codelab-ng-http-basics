@@ -16,4 +16,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.people = this.peopleService.getPeople();
   }
+
+  createPerson(name: string) {
+    console.log('new person', name);
+  }
 }
