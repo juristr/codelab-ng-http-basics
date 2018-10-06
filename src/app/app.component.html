@@ -28,6 +28,7 @@
           <input matInput placeholder="Person name" #personName>
         </mat-form-field>
         <button mat-raised-button color="primary" (click)="createPerson(personName.value)">Create</button>
+        <button mat-raised-button (click)="onSearchPerson(personName.value)">Search</button>
 
         <hr />
 

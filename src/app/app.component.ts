@@ -30,4 +30,12 @@ export class AppComponent implements OnInit {
         this.initList();
       });
   }
+
+  onSearchPerson(name: string) {
+    if (name) {
+      this.people = this.peopleService.getPeople({ name: name });
+    } else {
+      this.people = this.peopleService.getPeople();
+    }
+  }
 }
