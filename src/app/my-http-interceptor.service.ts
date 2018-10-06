@@ -3,9 +3,12 @@ import {
   HttpInterceptor,
   HttpRequest,
   HttpHandler,
-  HttpEvent
+  HttpEvent,
+  HttpResponse,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class MyHttpInterceptorService implements HttpInterceptor {
@@ -19,6 +22,19 @@ export class MyHttpInterceptorService implements HttpInterceptor {
       headers: request.headers.set('app-language', 'it')
     });
 
-    return next.handle(customReq);
+    return next.handle(customReq).pipe(
+      tap((ev: HttpEvent<any>) => {
+        if (ev instanceof HttpResponse) {
+          console.log('processing response', ev);
+        }
+      }),
+      catchError(response => {
+        if (response instanceof HttpErrorResponse) {
+          console.log('Processing http error', response);
+        }
+
+        return throwError(response);
+      })
+    );
   }
 }
