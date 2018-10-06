@@ -15,6 +15,10 @@ export class MyHttpInterceptorService implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    return next.handle(request);
+    const customReq = request.clone({
+      headers: request.headers.set('app-language', 'it')
+    });
+
+    return next.handle(customReq);
   }
 }
