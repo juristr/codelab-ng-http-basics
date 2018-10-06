@@ -24,10 +24,9 @@
       <mat-drawer-content class="app-page-container">
         <h1>People</h1>
 
-        <div *ngFor="let person of people">
+        <div *ngFor="let person of people | async">
           {{ person.name }}
         </div>
-
       </mat-drawer-content>
     </mat-drawer-container>
   </div>
