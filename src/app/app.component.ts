@@ -14,6 +14,10 @@ export class AppComponent implements OnInit {
   constructor(private peopleService: PeopleService) {}
 
   ngOnInit(): void {
+    this.initList();
+  }
+
+  initList() {
     this.people = this.peopleService.getPeople();
   }
 
@@ -23,7 +27,7 @@ export class AppComponent implements OnInit {
         name: name
       })
       .subscribe(createdPerson => {
-        console.log(createdPerson);
+        this.initList();
       });
   }
 }
